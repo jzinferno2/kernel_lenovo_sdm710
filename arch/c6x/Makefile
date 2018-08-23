@@ -24,7 +24,7 @@ KBUILD_CFLAGS   += -mbig-endian
 KBUILD_AFLAGS   += -mbig-endian
 LINKFLAGS       += -mbig-endian
 KBUILD_LDFLAGS  += -mbig-endian
-LDFLAGS += -EB
+KBUILD_LDFLAGS  += -EB
 endif
 
 head-y          := arch/c6x/kernel/head.o
