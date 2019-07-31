@@ -1,12 +1,14 @@
 ARCH=arm64
 
-CLANG_TRIPLE=aarch64-linux-gnu-
-CROSS_COMPILE=aarch64-linux-androidkernel-
-LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
+LLVM=1
+LLVM_IAS=1
+CROSS_COMPILE=aarch64-linux-gnu-
+LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gas/linux-x86
 
 FILES="
 arch/arm64/boot/Image
-arch/arm64/boot/Image.gz
+arch/arm64/boot/Image.lz4-dtb
+arch/arm64/boot/Image.lz4
 vmlinux
 System.map
 "
