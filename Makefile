@@ -811,7 +811,7 @@ endif
 
 ifneq ($(CONFIG_FRAME_WARN),0)
 ifneq ($(ld-name),lld)
-KBUILD_CFLAGS += $(call cc-option,-Wframe-larger-than=${CONFIG_FRAME_WARN})
+KBUILD_CFLAGS += -Wframe-larger-than=$(CONFIG_FRAME_WARN)
 endif
 endif
 
