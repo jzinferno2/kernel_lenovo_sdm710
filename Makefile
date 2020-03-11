@@ -768,11 +768,7 @@ endif
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS   += -Os
 else
-ifdef CONFIG_LTO_CLANG
 KBUILD_CFLAGS   += -O3
-else
-KBUILD_CFLAGS   += -O2
-endif
 endif
 
 ifeq ($(cc-name),clang)
