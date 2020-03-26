@@ -357,12 +357,10 @@ NM		= llvm-nm
 OBJCOPY 	= llvm-objcopy
 OBJDUMP 	= llvm-objdump
 READELF 	= llvm-readelf
-OBJSIZE 	= llvm-size
 STRIP		= llvm-strip
 else
-AS		= $(CROSS_COMPILE)as
-LD		= $(CROSS_COMPILE)ld
 CC		= $(CROSS_COMPILE)gcc
+LD		= $(CROSS_COMPILE)ld
 AR		= $(CROSS_COMPILE)ar
 NM		= $(CROSS_COMPILE)nm
 OBJCOPY		= $(CROSS_COMPILE)objcopy
