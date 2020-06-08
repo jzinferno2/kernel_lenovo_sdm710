@@ -375,26 +375,12 @@ DEPMOD		= depmod
 PERL		= perl
 PYTHON		= python
 CHECK		= sparse
-GZIP		= gzip
-BZIP2		= bzip2
-LZOP		= lzop
+KGZIP		= gzip
+KBZIP2		= bzip2
+KLZOP		= lzop
 LZMA		= lzma
 LZ4		= lz4c
 XZ		= xz
-
-# GZIP, BZIP2, LZOP env vars are used by the tools. Support them as the command
-# line interface, but use _GZIP, _BZIP2, _LZOP internally.
-_GZIP          := $(GZIP)
-_BZIP2         := $(BZIP2)
-_LZOP          := $(LZOP)
-
-# Reset GZIP, BZIP2, LZOP in this Makefile
-override GZIP=
-override BZIP2=
-override LZOP=
-
-# Reset GZIP, BZIP2, LZOP in recursive invocations
-MAKEOVERRIDES += GZIP= BZIP2= LZOP=
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
@@ -449,7 +435,7 @@ export VERSION PATCHLEVEL SUBLEVEL KERNELRELEASE KERNELVERSION
 export ARCH SRCARCH CONFIG_SHELL HOSTCC HOSTCFLAGS CROSS_COMPILE LD CC
 export CPP AR NM STRIP OBJCOPY OBJDUMP READELF
 export MAKE AWK GENKSYMS INSTALLKERNEL PERL PYTHON UTS_MACHINE
-export _GZIP _BZIP2 _LZOP LZMA LZ4 XZ
+export KGZIP KBZIP2 KLZOP LZMA LZ4 XZ
 export HOSTCXX HOSTCXXFLAGS LDFLAGS_MODULE CHECK CHECKFLAGS
 
 export KBUILD_CPPFLAGS NOSTDINC_FLAGS LINUXINCLUDE OBJCOPYFLAGS KBUILD_LDFLAGS
@@ -1071,7 +1057,7 @@ export mod_strip_cmd
 mod_compress_cmd = true
 ifdef CONFIG_MODULE_COMPRESS
   ifdef CONFIG_MODULE_COMPRESS_GZIP
-    mod_compress_cmd = $(_GZIP) -n -f
+    mod_compress_cmd = $(KGZIP) -n -f
   endif # CONFIG_MODULE_COMPRESS_GZIP
   ifdef CONFIG_MODULE_COMPRESS_XZ
     mod_compress_cmd = $(XZ) -f
