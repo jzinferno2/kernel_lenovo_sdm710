@@ -121,6 +121,9 @@ ifeq ($(KBUILD_SRC),)
 # Do we want to locate output files in a separate directory?
 ifeq ("$(origin O)", "command line")
   KBUILD_OUTPUT := $(O)
+else
+  KBUILD_OUTPUT := out
+  MAKEFLAGS += --no-print-directory
 endif
 
 # That's our default target when none is given on the command line
