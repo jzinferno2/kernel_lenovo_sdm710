@@ -1136,7 +1136,7 @@ ARCH_POSTLINK := $(wildcard $(srctree)/arch/$(SRCARCH)/Makefile.postlink)
 	$(if $(ARCH_POSTLINK), $(MAKE) -f $(ARCH_POSTLINK) $@, true)
 
 vmlinux: scripts/link-vmlinux.sh vmlinux_prereq $(vmlinux-deps) FORCE
-	+$(call if_changed,link-vmlinux)
+	+$(call if_changed_dep,link-vmlinux)
 
 # Build samples along the rest of the kernel
 ifdef CONFIG_SAMPLES

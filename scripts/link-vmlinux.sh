@@ -254,6 +254,7 @@ cleanup()
 	rm -f System.map
 	rm -f vmlinux
 	rm -f vmlinux.o
+	rm -f .vmlinux.d
 	rm -f .tmp_rtic_mp_sz*
 	rm -f rtic_mp.*
 }
@@ -415,3 +416,6 @@ fi
 
 # We made a new kernel - delete old version file
 rm -f .old_version
+
+# For fixdep
+echo "vmlinux: $0" > .vmlinux.d
