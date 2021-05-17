@@ -32,9 +32,7 @@ set -e
 # Will be supressed by "make -s"
 info()
 {
-	if [ "${quiet}" != "silent_" ]; then
-		printf "  %-7s %s\n" ${1} ${2}
-	fi
+	printf "  %-7s %s\n" "${1}" "${2}"
 }
 
 # Thin archive build here makes a final archive with
