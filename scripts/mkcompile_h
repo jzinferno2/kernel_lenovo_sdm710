@@ -7,9 +7,6 @@ PREEMPT=$4
 CC=$5
 LD=$6
 
-# Do not expand names
-set -f
-
 if [ -z "$KBUILD_BUILD_VERSION" ]; then
 	VERSION=$(cat .version 2>/dev/null || echo 1)
 else
