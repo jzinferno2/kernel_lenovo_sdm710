@@ -348,17 +348,16 @@ scripts/Kbuild.include: ;
 include scripts/Kbuild.include
 
 # Make variables (CC, etc...)
-LDGOLD		= $(CROSS_COMPILE)ld.gold
 CPP		= $(CC) -E
 ifneq ($(LLVM),)
 CC		= clang
 LD		= ld.lld
 AR		= llvm-ar
 NM		= llvm-nm
-OBJCOPY	= llvm-objcopy
-OBJDUMP	= llvm-objdump
-READELF	= llvm-readelf
-OBJSIZE	= llvm-size
+OBJCOPY 	= llvm-objcopy
+OBJDUMP 	= llvm-objdump
+READELF 	= llvm-readelf
+OBJSIZE 	= llvm-size
 STRIP		= llvm-strip
 else
 AS		= $(CROSS_COMPILE)as
@@ -675,10 +674,6 @@ export CFLAGS_GCOV CFLAGS_KCOV
 # Make toolchain changes before including arch/$(SRCARCH)/Makefile to ensure
 # ar/cc/ld-* macros return correct values.
 ifdef CONFIG_LTO_CLANG
-# use GNU gold with LLVMgold for LTO linking, and LD for vmlinux_link
-LDFINAL_vmlinux := $(LD)
-LD		:= $(LDGOLD)
-LDFLAGS		+= -plugin LLVMgold.so
 # use llvm-ar for building symbol tables from IR files, and llvm-dis instead
 # of objdump for processing symbol versions and exports
 LLVM_AR		:= llvm-ar
@@ -1217,9 +1212,6 @@ prepare-compiler-check: FORCE
 ifdef CONFIG_LTO_CLANG
   ifneq ($(call clang-ifversion, -ge, 0500, y), y)
 	@echo Cannot use CONFIG_LTO_CLANG: requires clang 5.0 or later >&2 && exit 1
-  endif
-  ifneq ($(call gold-ifversion, -ge, 112000000, y), y)
-	@echo Cannot use CONFIG_LTO_CLANG: requires GNU gold 1.12 or later >&2 && exit 1
   endif
 endif
 # Make sure compiler supports LTO flags
