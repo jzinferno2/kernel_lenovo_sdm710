@@ -301,23 +301,18 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 	  else if [ -x /bin/bash ]; then echo /bin/bash; \
 	  else echo sh; fi ; fi)
 
-# Use Clang/LLVM tools by default
-LLVM=1
-LLVM_IAS=1
-export LLVM LLVM_IAS
-
 ifneq ($(LLVM),)
-HOSTCC       = clang
-HOSTCXX      = clang++
+HOSTCC	= clang
+HOSTCXX	= clang++
 else
-HOSTCC       = gcc
-HOSTCXX      = g++
+HOSTCC	= gcc
+HOSTCXX	= g++
 endif
 
 HOSTCFLAGS   := -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer -std=gnu11
 HOSTCXXFLAGS = -O2
 
-ifeq ($(shell $(HOSTCC) -v 2>&1 | grep -c "clang version"), 1)
+ifneq ($(LLVM),)
 HOSTCFLAGS  += -Wno-unused-value -Wno-unused-parameter \
 		-Wno-missing-field-initializers
 endif
