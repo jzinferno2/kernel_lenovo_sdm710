@@ -312,8 +312,8 @@ HOSTCC	= gcc
 HOSTCXX	= g++
 endif
 
-HOSTCFLAGS   := -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer -std=gnu11
-HOSTCXXFLAGS = -O2
+HOSTCFLAGS   := -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fomit-frame-pointer -std=gnu11
+HOSTCXXFLAGS = -O3
 
 ifneq ($(LLVM),)
 HOSTCFLAGS  += -Wno-unused-value -Wno-unused-parameter \
