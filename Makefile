@@ -829,9 +829,7 @@ KBUILD_CFLAGS += $(call cc-option,-fno-reorder-blocks,) \
 endif
 
 ifneq ($(CONFIG_FRAME_WARN),0)
-ifneq ($(ld-name),lld)
 KBUILD_CFLAGS += -Wframe-larger-than=$(CONFIG_FRAME_WARN)
-endif
 endif
 
 # This selects the stack protector compiler flag. Testing it is delayed
