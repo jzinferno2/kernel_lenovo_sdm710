@@ -4,6 +4,8 @@ SUBLEVEL = 337
 EXTRAVERSION =
 NAME = Roaring Lionus
 
+# Linux 4.14.304
+
 # *DOCUMENTATION*
 # To see a list of typical targets execute "make help"
 # More info can be located in ./README
