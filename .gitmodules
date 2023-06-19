@@ -4,3 +4,6 @@
 [submodule "drivers/misc/kprofiles"]
 	path = drivers/misc/kprofiles
 	url = https://github.com/dakkshesh07/Kprofiles
+[submodule "fs/exfat"]
+	path = fs/exfat
+	url = https://github.com/namjaejeon/linux-exfat-oot
