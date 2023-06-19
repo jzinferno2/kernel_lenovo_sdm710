@@ -9,7 +9,11 @@ static int version_proc_show(struct seq_file *m, void *v)
 {
 	seq_printf(m, linux_proc_banner,
 		utsname()->sysname,
+#ifdef KFAKE
+		KFAKE CONFIG_LOCALVERSION,
+#else
 		utsname()->release,
+#endif
 		utsname()->version);
 	return 0;
 }
