@@ -553,9 +553,6 @@ KBUILD_CFLAGS	+= $(CLANG_FLAGS)
 KBUILD_AFLAGS	+= $(CLANG_FLAGS)
 endif
 
-ifneq ($(KFAKE),)
-KBUILD_CFLAGS += -DKFAKE='"$(shell curl -s https://www.kernel.org/finger_banner | grep -m1 stable | awk '{print $$NF}')"'
-endif
 
 ifeq ($(mixed-targets),1)
 # ===========================================================================

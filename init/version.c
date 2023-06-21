@@ -22,11 +22,6 @@ extern int version_string(LINUX_VERSION_CODE);
 int version_string(LINUX_VERSION_CODE);
 #endif
 
-#ifdef KFAKE
-# undef UTS_RELEASE
-# define UTS_RELEASE KFAKE CONFIG_LOCALVERSION
-#endif
-
 struct uts_namespace init_uts_ns = {
 	.kref = KREF_INIT(2),
 	.name = {
